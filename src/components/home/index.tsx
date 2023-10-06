@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { MovieType } from "../../type/movie";
 import DisplaySearchResult from "../display-result";
 
-type SearchResult = {
-  id: number;
-  backdrop_path: string;
-  title: string;
-  overview: string;
-};
-
+type ExcludedKeys = "poster_path" | "vote_count";
 
 const Home: React.FC = () => {
   const [search, setSearch] = useState("");
-  const [searchResult, setSearchResult] = useState<SearchResult[]>([]);
+
+  const [searchResult, setSearchResult] = useState<
+    Omit<MovieType, ExcludedKeys>[]
+  >([]);
 
   const handleSearch = (e: React.MouseEvent<HTMLFormElement>) => {
     e.preventDefault();

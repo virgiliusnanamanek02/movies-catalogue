@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import { MovieType } from "../../type/movie";
 
 const IMAGE_URL = "https://image.tmdb.org/t/p/w500";
+type ExcludedKeys = "poster_path" | "vote_count";
 
-const DisplaySearchResult: React.FC<MovieType> = ({
+const DisplaySearchResult: React.FC<Omit<MovieType, ExcludedKeys>> = ({
   id,
   title,
   overview,
@@ -40,5 +41,6 @@ const DisplaySearchResult: React.FC<MovieType> = ({
     </div>
   ) : null; // Jika shouldRender adalah false, kembalikan null
 };
+
 
 export default DisplaySearchResult;
